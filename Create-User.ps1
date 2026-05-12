@@ -1,6 +1,7 @@
+$Name= ReadHost 
 $Password= ReadHost -AsSecureString
 $thing = @{
-Name    = 'User1'
+Name    = '$Name'
 Password = $Password
 FullName = 'FirstUser' 
 Description = 'Theusercreated.'
