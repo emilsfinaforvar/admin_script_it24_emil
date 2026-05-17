@@ -7,6 +7,7 @@ Write-Output "The Computer is named $Computername"
 $Systeminfo = Get-Ciminstance Win32_Operatingsystem|
 Select-Object Caption,OSArchitecture,Version
 Get-Process | Measure-Object -Average -Sum  -Maximum CPU
+$MemoryInfo = Get-ComputerInfo "*memory"
 New-Item -Path "..\logs\" -Name "logfile.log" -ItemType "File" -Value "Loginfo from commands"
-$Log = "$env:Computername - $Time - $Username - $Systeminfo"
+$Log = "$env:Computername - $Time - $Username - $Systeminfo - $MemoryInfo"
 $Log | Add-Content "..\logs\logfile.log"
