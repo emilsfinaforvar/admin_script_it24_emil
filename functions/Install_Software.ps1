@@ -14,15 +14,15 @@ Write-Host "Incorrect decision, exiting program" -ForegroundColor Yellow
 exit
 
 }
+$decision = Read-Host "Enter the id of the software examples VideoLAN.VLC,Google.Chrome"
+$Wingetid = "VideoLAN.VLC"
 
 if ($direction -eq "3") {
     Write-Host "Installing $decision" -ForegroundColor Blue
-    winget install --id VideoLAN.vlc -e --silent
+    winget install --id $Wingetid -e --silent
 }
 else {
     Write-Host "Uninstalling $decision" -ForegroundColor Blue
-    winget uninstall --id VideoLAN.vlc -e --silent
+    winget uninstall --id $Wingetid -e --silent
 }
 
-$decision = winget install --id VideoLAN.VLC -e --silent
- 
