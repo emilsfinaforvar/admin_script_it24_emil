@@ -2,6 +2,14 @@ Clear-Host
 Write-Host "Manage software"
 
 # Choose to uninstall / install
+Write-Host "Do you want to install group software or individual?"
+Write-Host "1 = group"
+Write-Host "2 = individual"
+$Bigchoices= Read-Host "1 for group and 2 for individual"
+if ($Bigchoices -notin @("1", "2")) {
+Write-Host "Pick either 1 or 2 please." -ForegroundColor Yellow
+exit
+}
 
 Write-Host "What do you wanna do?"
 Write-Host "3 = Install"
@@ -14,7 +22,7 @@ Write-Host "Incorrect decision, exiting program" -ForegroundColor Yellow
 exit
 
 }
-$decision = Read-Host "Enter the id of the software examples VideoLAN.VLC,Google.Chrome"
+$decision = Read-Host "Enter the id of the software, examples VideoLAN.VLC"
 $Wingetid = "VideoLAN.VLC"
 
 if ($direction -eq "3") {
