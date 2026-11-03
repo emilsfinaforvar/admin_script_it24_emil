@@ -9,8 +9,18 @@ $Bigchoices= Read-Host "1 for group and 2 for individual"
 if ($Bigchoices -notin @("1", "2")) {
 Write-Host "Pick either 1 or 2 please." -ForegroundColor Yellow
 exit
-}
 
+} 
+if ($Bigchoices -eq "1") {
+Write-Host "Pick between these groups"
+Write-Host "5 = Teacher"
+Write-Host "6 = student"
+Write-Host "7 = Admin"
+Read-Host "Pick 5 for Teacher 6 for Student or 7 for admin"
+}
+else {
+Proceeding   
+}
 Write-Host "What do you wanna do?"
 Write-Host "3 = Install"
 Write-Host "4 = Uninstall"
@@ -23,7 +33,7 @@ exit
 
 }
 $decision = Read-Host "Enter the id of the software, examples VideoLAN.VLC"
-$Wingetid = "VideoLAN.VLC"
+$Wingetid = "VideoLAN.VLC","Google.Chrome" 
 
 if ($direction -eq "3") {
     Write-Host "Installing $decision" -ForegroundColor Blue
