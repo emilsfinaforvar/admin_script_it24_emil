@@ -1,6 +1,5 @@
 Clear-Host
 Write-Host "Manage software"
-$GroupFile = "$PSScriptRoot\..\data\groupedsoftware.json"
 # Choose to uninstall / install
 Write-Host "Do you want to install group software or individual?"
 Write-Host "1 = group"
@@ -13,8 +12,7 @@ exit
  switch($Bigchoices) {  
 "1" {
 
-$Groups = Get-Content $GroupFile | ConvertFrom-Json   
-$Programs = $Groups.$Groupchoosen
+
 Write-Host "What group of programs do you want?"
 Write-Host "5 for teacher"
 Write-Host "6 for user"
@@ -30,7 +28,8 @@ Write-Host $Groupidea
 Write-Host $Groupthing
 New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
 $LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
-$LogFile | Add-Content "..\data\Groupsoftwareresults.log"
+$LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
+Write-Host "Simulation only"
 }
 if ($Groupchoice -eq "6") { 
 $Groupchoosen = "Mozilla.Firefox"
@@ -42,7 +41,8 @@ Write-Host $Groupidea
 Write-Host $Groupthing
 New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
 $LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
-$LogFile | Add-Content "..\data\Groupsoftwareresults.log" 
+$LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
+Write-Host "Simulation only" 
 }
 if ($Groupchoice -eq "7") { 
 $Groupchoosen = "Mozilla.Firefox"
@@ -54,7 +54,8 @@ Write-Host $Groupidea
 Write-Host  $Groupthing  
 New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
 $LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
-$LogFile | Add-Content "..\data\Groupsoftwareresults.log"
+$LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
+Write-Host "Simulation only"
 }
 }
 
@@ -81,10 +82,16 @@ $LogFile | Add-Content "..\data\Groupsoftwareresults.log"
     if ($direction -eq "3") {
     Write-Host "Installing $decision" -ForegroundColor Blue
     winget install --id $Wingetid -e --silent
+    New-Item -Path "..\data\" -Name "softwareresults.log"
+    $LogFile = "$decision"
+    $LogFile | Add-Content "..\data\softwareresults.log"
     }
     else {
     Write-Host "Uninstalling $decision" -ForegroundColor Blue
     winget uninstall --id $Wingetid -e --silent
+    New-Item -Path "..\data\" -Name "softwareresults.log"
+    $LogFile = "$decision"
+    $LogFile | Add-Content "..\data\softwareresults.log"
     }
 }
 }
