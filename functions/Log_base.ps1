@@ -8,6 +8,7 @@ $Systeminfo = Get-Ciminstance Win32_Operatingsystem| # Gets a Ciminstance Win32_
 Select-Object Caption,OSArchitecture,Version,FreeVirtualMemory # Shows only windows edition Version and 64 bits architechture.
 Get-Process | Measure-Object -Average -Sum  -Maximum CPU # Gets all processes and then shows all cpu used by them
 $MemoryInfo = Get-ComputerInfo "*memory" # Gets the info on how much memory is used and how much is free. 
+$Mycomputer = Read-Host Computername 
 New-Item -Path "..\logs\" -Name "logfile.log" -ItemType "File" -Value "Loginfo from commands" # Creates a logfile if there isn't one already if there is gives an error that it already exists.
-$Log = "$env:Computername - $Time - $Username - $Systeminfo - $MemoryInfo" # Has all the info generated from commands.
+$Log = "$env:Computername - $Time - $Username - $Systeminfo - $MemoryInfo - $Mycomputer" # Has all the info generated from commands.
 $Log | Add-Content "..\logs\logfile.log" # Puts all the info in the logfile.

@@ -26,8 +26,10 @@ Write-Host "Installing software group"
 Write-Host $Groupchoosen
 Write-Host $Groupidea 
 Write-Host $Groupthing
+$Username = $env:Username
+$Time = Get-Date 
 New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
-$LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
+$LogFile = "$GroupChoosen - $Groupidea - $Groupthing - $Username - $Time"
 $LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
 Write-Host "Simulation only"
 }
@@ -39,8 +41,10 @@ Write-Host "Installing software group"
 Write-Host $Groupchoosen 
 Write-Host $Groupidea 
 Write-Host $Groupthing
+$Username = $env:Username
+$Time = Get-Date
 New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
-$LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
+$LogFile = "$GroupChoosen - $Groupidea - $Groupthing - $Username - $Time"
 $LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
 Write-Host "Simulation only" 
 }
@@ -51,9 +55,11 @@ $Groupthing = "Notepad++.Notepad++"
 Write-Host "Installing software group" 
 Write-Host $Groupchoosen
 Write-Host $Groupidea 
-Write-Host  $Groupthing  
+Write-Host  $Groupthing
+$Username = $env:Username
+$Time = Get-Date  
 New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
-$LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
+$LogFile = "$GroupChoosen - $Groupidea - $Groupthing - $Username - $Time"
 $LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
 Write-Host "Simulation only"
 }
@@ -82,15 +88,19 @@ Write-Host "Simulation only"
     if ($direction -eq "3") {
     Write-Host "Installing $decision" -ForegroundColor Blue
     winget install --id $Wingetid -e --silent
+    $Username = $env:Username
+    $Time = Get-Date
     New-Item -Path "..\data\" -Name "softwareresults.log"
-    $LogFile = "$decision"
+    $LogFile = "$decision - $Username - $Time"
     $LogFile | Add-Content "..\data\softwareresults.log"
     }
     else {
     Write-Host "Uninstalling $decision" -ForegroundColor Blue
     winget uninstall --id $Wingetid -e --silent
+    $Username = $env:Username
+    $Time = Get-Date
     New-Item -Path "..\data\" -Name "softwareresults.log"
-    $LogFile = "$decision"
+    $LogFile = "$decision - $Username - $Time"
     $LogFile | Add-Content "..\data\softwareresults.log"
     }
 }
