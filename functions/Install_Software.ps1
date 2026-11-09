@@ -1,6 +1,6 @@
 Clear-Host
 Write-Host "Manage software"
-$GroupFile = "$PSScriptRoot\..\data\groupedsoftware.txt"
+$GroupFile = "$PSScriptRoot\..\data\groupedsoftware.json"
 # Choose to uninstall / install
 Write-Host "Do you want to install group software or individual?"
 Write-Host "1 = group"
@@ -13,30 +13,48 @@ exit
  switch($Bigchoices) {  
 "1" {
 
-$Groups = Get-Content $GroupFile    
-
+$Groups = Get-Content $GroupFile | ConvertFrom-Json   
+$Programs = $Groups.$Groupchoosen
 Write-Host "What group of programs do you want?"
 Write-Host "5 for teacher"
 Write-Host "6 for user"
 Write-Host "7 for admin"
-$GroupChoosen= Read-Host "Choose a group"
-switch ($GroupChoosen) {
- "5" { $GroupChoosen = "Teacher"}
- "6" { $GroupChoosen = "User"}
- "7" { $GroupChoosen = "admin"}  
-    default {
-    if ($GroupChoosen -notin @("5", "6", "7")) {
-    Write-Host "Incorrect decision, exiting program" -ForegroundColor Yellow
-    return
-    }
-
-{
-$Programs = $Groups.$Groupchoosen    
-foreach ($Program in $Programs) { Write-Host "Installing $Program"} 
-Write-Host "Installing group of programs"
-Write-Host $GroupChoosen
-}   
-}     
+$Groupchoice = Read-Host "Choose a group"
+if ($Groupchoice -eq "5") { 
+$Groupchoosen = "Google.Chrome"
+$Groupidea = "Notepad++.Notepad++"
+$Groupthing = "7zip.7zip"
+Write-Host "Installing software group" 
+Write-Host $Groupchoosen
+Write-Host $Groupidea 
+Write-Host $Groupthing
+New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
+$LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
+$LogFile | Add-Content "..\data\Groupsoftwareresults.log"
+}
+if ($Groupchoice -eq "6") { 
+$Groupchoosen = "Mozilla.Firefox"
+$Groupidea = "VideoLAN.VLC"
+$Groupthing = "7zip.7zip"
+Write-Host "Installing software group" 
+Write-Host $Groupchoosen 
+Write-Host $Groupidea 
+Write-Host $Groupthing
+New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
+$LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
+$LogFile | Add-Content "..\data\Groupsoftwareresults.log" 
+}
+if ($Groupchoice -eq "7") { 
+$Groupchoosen = "Mozilla.Firefox"
+$Groupidea = "Git.Git"
+$Groupthing = "Notepad++.Notepad++"
+Write-Host "Installing software group" 
+Write-Host $Groupchoosen
+Write-Host $Groupidea 
+Write-Host  $Groupthing  
+New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
+$LogFile = "$GroupChoosen - $Groupidea - $Groupthing"
+$LogFile | Add-Content "..\data\Groupsoftwareresults.log"
 }
 }
 
