@@ -1,4 +1,6 @@
 Clear-Host
+$LogFile = "$PSScriptRoot\.\logs\Groupedsoftwareresults.log"
+$LogFile = "$PSScriptRoot\.\logs\softwareresults.log"
 Write-Host "Manage software"
 # Choose to uninstall / install
 Write-Host "Do you want to install group software or individual?"
@@ -28,9 +30,8 @@ Write-Host $Groupidea
 Write-Host $Groupthing
 $Username = $env:Username
 $Time = Get-Date 
-New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
 $LogFile = "$GroupChoosen - $Groupidea - $Groupthing - $Username - $Time"
-$LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
+$LogFile | Add-Content ".\logs\Groupedsoftwareresults.log"
 Write-Host "Simulation only"
 }
 if ($Groupchoice -eq "6") { 
@@ -43,9 +44,8 @@ Write-Host $Groupidea
 Write-Host $Groupthing
 $Username = $env:Username
 $Time = Get-Date
-New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
 $LogFile = "$GroupChoosen - $Groupidea - $Groupthing - $Username - $Time"
-$LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
+$LogFile | Add-Content ".\logs\Groupedsoftwareresults.log"
 Write-Host "Simulation only" 
 }
 if ($Groupchoice -eq "7") { 
@@ -58,9 +58,8 @@ Write-Host $Groupidea
 Write-Host  $Groupthing
 $Username = $env:Username
 $Time = Get-Date  
-New-Item -Path "..\data\" -Name "Groupedsoftwareresults.log"
 $LogFile = "$GroupChoosen - $Groupidea - $Groupthing - $Username - $Time"
-$LogFile | Add-Content "..\data\Groupedsoftwareresults.log"
+$LogFile | Add-Content ".\logs\Groupedsoftwareresults.log"
 Write-Host "Simulation only"
 }
 }
@@ -90,18 +89,16 @@ Write-Host "Simulation only"
     winget install --id $Wingetid -e --silent
     $Username = $env:Username
     $Time = Get-Date
-    New-Item -Path "..\data\" -Name "softwareresults.log"
     $LogFile = "$decision - $Username - $Time"
-    $LogFile | Add-Content "..\data\softwareresults.log"
+    $LogFile | Add-Content ".\logs\softwareresults.log"
     }
     else {
     Write-Host "Uninstalling $decision" -ForegroundColor Blue
     winget uninstall --id $Wingetid -e --silent
     $Username = $env:Username
     $Time = Get-Date
-    New-Item -Path "..\data\" -Name "softwareresults.log"
     $LogFile = "$decision - $Username - $Time"
-    $LogFile | Add-Content "..\data\softwareresults.log"
+    $LogFile | Add-Content ".\logs\softwareresults.log"
     }
 }
 }

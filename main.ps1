@@ -6,12 +6,12 @@ $Themainmenu= Read-Host "Choose 1 2 or 3!"
 
 if ($Themainmenu -eq "1") {
 Write-Host "Creating a user"
-C:\Users\Emil\Documents\Slutprojekt\admin_script_it24_emil\functions\Create-User.ps1 }
+.\functions\Create-User.ps1 }
 
 if ($Themainmenu -eq "2") {
 Write-Host "Getting useful data"
-C:\Users\Emil\Documents\Slutprojekt\admin_script_it24_emil\functions\Log_base.ps1 }
+.\functions\Log_base.ps1 }
 
 if ($Themainmenu -eq "3") {
 Write-Host "Letting you install software"
-C:\Users\Emil\Documents\Slutprojekt\admin_script_it24_emil\functions\Install_Software.ps1 }
+.\functions\Install_Software.ps1 }

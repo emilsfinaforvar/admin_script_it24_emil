@@ -1,3 +1,4 @@
+$Log = "$PSScriptRoot\.\logs\logfile.log"
 $Time = Get-Date # Gets the date and time
 Write-Output "The date and time is $Time" # Writes the results of getting date and time.
 $Username = $env:Username # Gets the username of the one running the script.
@@ -9,6 +10,5 @@ Select-Object Caption,OSArchitecture,Version,FreeVirtualMemory # Shows only wind
 Get-Process | Measure-Object -Average -Sum  -Maximum CPU # Gets all processes and then shows all cpu used by them
 $MemoryInfo = Get-ComputerInfo "*memory" # Gets the info on how much memory is used and how much is free. 
 $Mycomputer = Read-Host Computername 
-New-Item -Path "..\logs\" -Name "logfile.log" -ItemType "File" -Value "Loginfo from commands" # Creates a logfile if there isn't one already if there is gives an error that it already exists.
 $Log = "$env:Computername - $Time - $Username - $Systeminfo - $MemoryInfo - $Mycomputer" # Has all the info generated from commands.
-$Log | Add-Content "..\logs\logfile.log" # Puts all the info in the logfile.
+$Log | Add-Content ".\logs\logfile.log" # Puts all the info in the logfile.
